@@ -4,56 +4,370 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
+@background: rgba(112, 128, 144, 0.9);
+@vietnam: "Be Vietnam", sans-serif;
+@raleway: "raleway", sans-serif;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+  font-family: @raleway;
+
+  .backgroundimg {
+    width: 100%;
     height: 100%;
+    z-index: -1;
+    position: absolute;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    @media (max-width: 500px) {
+      .backgroundimg {
+        background-size: auto;
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+
+  .maincontainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+    margin-top: 5%;
+    background-color: @background;
+    z-index: 0;
+    border-radius: 1rem;
+    padding: 2%;
+    position: sticky;
+    top: 10%;
+  }
+}
+//Header
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  .resumetitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    margin: 0, auto;
+    background-color: @background;
+
+    h1 {
+      font-size: 2.4rem;
+      justify-content: flex-start;
+      color: white;
+    }
+    .resumenav {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+      align-content: stretch;
+
+      a {
+        text-decoration: none;
+        justify-content: space-between;
+        color: white;
+        margin: 2rem;
+      }
+
+      a:hover {
+        color: lightgrey;
+      }
+    }
+  }
 }
 
+.profilepic {
+  img {
+    max-width: 20vh;
+    max-height: 20vh;
+    background-color: white;
+    border-radius: 3rem;
+    padding: 3%;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+    -ms-animation: fadein 3s; /* Internet Explorer */
+    -o-animation: fadein 3s; /* Opera < 12.1 */
+    animation: fadein 3s;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  img:hover {
+    box-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+}
+
+//About me tile
+#about {
+  .aboutcontainer {
+    width: 60vw;
+    height: 20vh;
+    display: flex;
+    background-color: white;
+    border-radius: 1rem;
+    -webkit-animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    -ms-animation: fadein 3s;
+    -o-animation: fadein 3s;
+    animation: fadein 3s;
+
+    .aboutp {
+      display: flex;
+      align-items: center;
+      padding: 1%;
+      margin: 5%;
+
+      h3 {
+        font-family: @raleway;
+        font-size: 3.2rem;
+        padding: 1%;
+        margin: 1%;
+        border-right: 1px solid black;
+      }
+
+      p {
+        font-family: @vietnam;
+        font-size: 1.6rem;
+        margin: 1%;
+      }
+    }
+  }
+  .aboutcontainer:hover {
+    box-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+}
+
+.bottomcontent {
+  display: flex;
+  height: 50vh;
+  width: 73vw;
+  margin: 1% 0 0 1%;
+
+  #work {
+    display: flex;
+    background-color: white;
+    margin: 1%;
+    width: 35%;
+    border-radius: 1rem;
+    -webkit-animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    -ms-animation: fadein 3s;
+    -o-animation: fadein 3s;
+    animation: fadein 3s;
+
+    .workcontainer {
+      justify-content: center;
+      margin: 1%;
+
+      h2 {
+        font-size: 3.5rem;
+        margin: 3%;
+        text-align: center;
+        padding: 1rem;
+        border-bottom: 1px solid black;
+        font-family: @raleway;
+      }
+
+      h4 {
+        font-size: 2rem;
+        margin: 0.5rem;
+        padding: 0.6rem;
+      }
+      p {
+        font-size: 1.5rem;
+        margin: 0.5rem;
+        font-family: @vietnam;
+      }
+    }
+  }
+  #work:hover {
+    box-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  #skills {
+    #work();
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    .skillcontainer {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 3.5rem;
+        border-right: 1px solid black;
+        padding: 10rem;
+        max-height: 100%;
+      }
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      span {
+        font-size: 3rem;
+        margin: 2rem;
+        font-style: @vietnam;
+      }
+    }
+  }
+}
+#skills:hover {
+  box-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
